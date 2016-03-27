@@ -15,19 +15,21 @@ import java.util.Scanner;
  *
  * @author Anggi
  */
+
 public class Application {
-
-    static Scanner sc = new Scanner(System.in);
-    int mn = -1;
-    List<Kereta> keretas = PopulateData.populateKereta();
-    List<Pegawai> pegawais = new ArrayList<Pegawai>();
-    List<Tiket> tikets = new ArrayList<Tiket>();
-    Kereta currentKereta = null;
-    Pegawai currentPegawai = null;
-
+      static Scanner sc = new Scanner(System.in);
+      int mn = -1;
+        List<Kereta> keretas = PopulateData.populateKereta();
+        List<Pegawai> pegawais = new ArrayList<Pegawai>();
+        List<Tiket> tikets = new ArrayList<Tiket>();
+        Kereta currentKereta = null;
+        Pegawai currentPegawai = null;
+    
     public void main() {
+      
 
-        pegawais.add(new Pegawai("11111", "PBO", "sandiaman"));
+        pegawais.add(new Pegawai("1111", "PBO", "sandiaman","085659540490","Anggi"));
+
         while (mn != 0) {
 
             if (currentPegawai == null) {
@@ -51,83 +53,80 @@ public class Application {
                     System.out.println("21. Tambah Stasiun Baru");
                     System.out.println("22. Tambah Gerbong Baru");
                 }
+                
                 try {
-                    mn = Integer.parseInt(inputStringWithText("Pilih menu"));
+                mn = Integer.parseInt(inputStringWithText("Pilih menu"));
 
-                    switch (mn) {
-                        case 1:
-                            Kereta k = new Kereta(inputStringWithText("Nama kereta"), null /*inputStringWithText("Jadwal kereta")*/);
-                            currentKereta = k;
-                            keretas.add(k);
+                switch (mn) {
+                    case 1:
+                        Kereta k = new Kereta(inputStringWithText("Nama kereta"), null /*inputStringWithText("Jadwal kereta")*/);
+                        currentKereta = k;
+                        keretas.add(k);
+                        break;
 
-                            break;
+                    case 2:
+                        showContent(keretas);
+                        int p = Integer.parseInt(inputStringWithText("Pilih Kereta [0 Apabila cancel]"));
+                        currentKereta = p == 0 ? currentKereta : keretas.get(p - 1);
+                        break;
 
-                        case 2:
-                            showContent(keretas);
-                            int p = Integer.parseInt(inputStringWithText("Pilih Kereta [0 Apabila cancel]"));
-                            currentKereta = p == 0 ? currentKereta : keretas.get(p - 1);
-                            break;
+                    case 3:
+                        Pegawai pegawai = new Pegawai(inputStringWithText("NIP"), inputStringWithText("Username"), inputStringWithText("Password"), inputStringWithText("No.Telp"), inputStringWithText("Nama"));
+                        pegawai.setNama(inputStringWithText("Nama"));
+                        pegawai.setAlamat(inputStringWithText("Alamat"));
+                        pegawai.setNoTelp(inputStringWithText("No Telp"));
+                        pegawais.add(pegawai);
+                        break;
 
-                        case 3:
-                            Pegawai pegawai = new Pegawai(inputStringWithText("NIP"), inputStringWithText("Username"), inputStringWithText("Password"));
-                            pegawai.setNama(inputStringWithText("Nama"));
-                            pegawai.setAlamat(inputStringWithText("Alamat"));
-                            pegawai.setNoTelp(inputStringWithText("No Telp"));
-                            break;
+                    case 4:
+                        showContent(pegawais);
+                        break;
 
-                        case 4:
-                            showContent(pegawais);
-                            break;
+                    case 5:
+                        Tiket tiket = inputTiket(keretas);
+                        tikets.add(tiket);
+                        System.out.println(tiket);
+                        break;
 
-                        case 5:
-                            Tiket tiket = inputTiket(keretas);
-                            tikets.add(tiket);
-                            System.out.println(tiket);
-                            break;
+                    case 6:
+                        printTiket(tikets, inputStringWithText("Masukkan kode tiket"));
+                        break;
 
-                        case 6:
-                            printTiket(tikets, inputStringWithText("Masukkan kode tiket"));
-                            break;
-
-                        case 99:
-                            currentPegawai = null;
-                            break;
-                    }
-
-                    if (mn >= 20 && mn <= 22) {
-                        if (currentKereta != null) {
-
-                            switch (mn) {
-                                case 20:
-                                    try {
-                                        System.out.println(currentKereta.getDetail());
-                                    } catch (Exception e) {
-                                        System.out.println("KERETA TIDAK DITEMUKAN");
-                                    }
-                                    break;
-
-                                case 21:
-                                    currentKereta.addRute(
-                                            new Stasiun(inputStringWithText("Nama stasiun asal"), inputStringWithText("Daerah stasiun asal")),
-                                            new Stasiun(inputStringWithText("Nama stasiun tujuan"), inputStringWithText("Daerah stasiun tujuan")));
-                                    break;
-
-                                case 22:
-                                    currentKereta.addGerbong(inputGerbong());
-                                    break;
-                            }
-
-                        } else {
-                            System.out.println("Maaf anda belum memilih kereta");
-                        }
-                    }
-
-                } catch (Exception e) {
-                    System.out.println("Menu Salah");
+                    case 99:
+                        currentPegawai = null;
+                        break;
                 }
+
+                if (mn >= 20 && mn <= 22) {
+                    if (currentKereta != null) {
+
+                        switch (mn) {
+                            case 20:
+                                System.out.println(currentKereta.getDetail());
+                                break;
+
+                            case 21:
+                                currentKereta.addRute(
+                                        new Stasiun(inputStringWithText("Nama stasiun asal"), inputStringWithText("Daerah stasiun asal")),
+                                        new Stasiun(inputStringWithText("Nama stasiun tujuan"), inputStringWithText("Daerah stasiun tujuan")));
+                                break;
+
+                            case 22:
+                                currentKereta.addGerbong(inputGerbong());
+                                break;
+                        }
+
+                    } else {
+                        System.out.println("Maaf anda belum memilih kereta");
+                    }
+                }
+                } catch (Exception e) {
+                     System.out.println("Menu Salah");
+               }
             }
         }
     }
+
 
     private static String inputStringWithText(String text) {
         System.out.print(text + " : ");
@@ -137,7 +136,7 @@ public class Application {
     private static void showContent(List list) {
         int i = 0;
         for (Object aList : list) {
-            System.out.println(++i + ". " + aList + "\n");
+            System.out.println(++i + ". " + aList.toString() + "\n");
         }
     }
 
@@ -192,7 +191,7 @@ public class Application {
 
     private static void printTiket(List<Tiket> tikets, String kodeTiket) {
         Tiket found = null;
-        for (Tiket tiket : tikets) {
+        for(Tiket tiket : tikets) {
             if (tiket.getNoKursi().equalsIgnoreCase(kodeTiket)) {
                 found = tiket;
                 break;
@@ -204,10 +203,94 @@ public class Application {
 
     private static Pegawai loginPegawai(List<Pegawai> pegawais, String username, String password) {
         for (Pegawai pegawai : pegawais) {
-            if (pegawai.getUsername().equalsIgnoreCase(username) && pegawai.getPassword().equalsIgnoreCase(password)) {
+            if (pegawai.getUsername().equalsIgnoreCase(username) && pegawai.getPassword().equalsIgnoreCase(password))
                 return pegawai;
-            }
         }
-        return null;
+        return null;  
+    }
+    
+    public void menu(int mn){
+        Kereta currentKereta = null;
+        System.out.println("============= KAI Ticketting ============");
+                System.out.println("1. Tambah Kereta Baru");
+                System.out.println("2. Pilih dari List Kereta");
+                System.out.println("3. Tambah Pegawai Baru");
+                System.out.println("4. List Pegawai");
+                System.out.println("5. Beli Tiket");
+                System.out.println("6. Print Tiket");
+                System.out.println("99. Logout");
+
+                if (currentKereta != null) {
+                    System.out.println("============= Menu Kereta ===========");
+                    System.out.println("20. Detail Kereta");
+                    System.out.println("21. Tambah Stasiun Baru");
+                    System.out.println("22. Tambah Gerbong Baru");
+                }
+                
+                mn = Integer.parseInt(inputStringWithText("Pilih menu"));
+
+                switch (mn) {
+                    case 1:
+                        Kereta k = new Kereta(inputStringWithText("Nama kereta"), new Date() /*inputStringWithText("Jadwal kereta")*/);
+                        currentKereta = k;
+                        keretas.add(k);
+                        break;
+
+                    case 2:
+                        showContent(keretas);
+                        int p = Integer.parseInt(inputStringWithText("Pilih Kereta [0 Apabila cancel]"));
+                        currentKereta = p == 0 ? currentKereta : keretas.get(p - 1);
+                        break;
+
+                    case 3:
+                        Pegawai pegawai = new Pegawai(inputStringWithText("NIP"), inputStringWithText("Username"), inputStringWithText("Password"), inputStringWithText("NoTelp"), inputStringWithText("Nama"));
+                        pegawai.setNama(inputStringWithText("Nama"));
+                        pegawai.setAlamat(inputStringWithText("Alamat"));
+                        pegawai.setNoTelp(inputStringWithText("No Telp"));
+                        break;
+
+                    case 4:
+                        showContent(pegawais);
+                        break;
+
+                    case 5:
+                        Tiket tiket = inputTiket(keretas);
+                        tikets.add(tiket);
+                        System.out.println(tiket);
+                        break;
+
+                    case 6:
+                        printTiket(tikets, inputStringWithText("Masukkan kode tiket"));
+                        break;
+
+                    case 99:
+                        currentPegawai = null;
+                        break;
+                }
+
+                if (mn >= 20 && mn <= 22) {
+                    if (currentKereta != null) {
+
+                        switch (mn) {
+                            case 20:
+                                System.out.println(currentKereta.getDetail());
+                                System.out.println("apa");
+                                break;
+
+                            case 21:
+                                currentKereta.addRute(
+                                        new Stasiun(inputStringWithText("Nama stasiun asal"), inputStringWithText("Daerah stasiun asal")),
+                                        new Stasiun(inputStringWithText("Nama stasiun tujuan"), inputStringWithText("Daerah stasiun tujuan")));
+                                break;
+
+                            case 22:
+                                currentKereta.addGerbong(inputGerbong());
+                                break;
+                        }
+
+                    } else {
+                        System.out.println("Maaf anda belum memilih kereta");
+                    }
+                }
     }
 }
