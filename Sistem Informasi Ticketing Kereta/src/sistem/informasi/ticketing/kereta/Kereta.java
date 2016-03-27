@@ -14,7 +14,6 @@ import java.util.List;
  *
  * @author Anggi & Reynaldi
  */
-
 public class Kereta {
 
     private String nama;
@@ -24,7 +23,7 @@ public class Kereta {
 
     public Kereta(String nama, Date jadwal) {
         this.nama = nama;
-        this.jadwal = jadwal;
+         this.jadwal = jadwal = new Date();
 //        rute = new ArrayList<Stasiun>();
         gerbongs = new ArrayList<Gerbong>();
     }
@@ -67,12 +66,16 @@ public class Kereta {
     @Override
     public String toString() {
         String s = "Nama kereta : " + nama + "\n";
-        s += "Jadwal kereta : " + jadwal + "\n";
-        if (rute.getAsal() != null && rute.getTujuan() != null)
-            s += "Rute : " + ((Stasiun) rute.getAsal()) + " - " + ((Stasiun) rute.getTujuan()).getNama() + "\n";
+        try {
+
+            s += "Jadwal kereta : " + jadwal + "\n";
+            if (rute.getAsal() != null && rute.getTujuan() != null) {
+                s += "Rute : " + ((Stasiun) rute.getAsal()).getNama() + " - " + ((Stasiun) rute.getTujuan()).getNama() + "\n";
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Lengkapi dulu Stasiun baru dan Gerbong Barunya gan");
+        }
 
         return s;
     }
 }
-
-
