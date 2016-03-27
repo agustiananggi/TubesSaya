@@ -12,10 +12,12 @@ package sistem.informasi.ticketing.kereta;
 public class Pegawai {
     private String username, password, nip, nama, alamat, noTelp;
 
-    public Pegawai(String nip, String username, String password) {
+    public Pegawai(String nip, String username, String password, String noTelp, String nama) {
         this.username = username;
         this.password = password;
         this.nip = nip;
+        this.nama=nama;
+        this.noTelp=noTelp;
     }
 
     public Pegawai() {
@@ -43,7 +45,7 @@ public class Pegawai {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password;   
     }
 
     public String getNama() {
@@ -68,5 +70,15 @@ public class Pegawai {
 
     public void setNoTelp(String noTelp) {
         this.noTelp = noTelp;
+    }
+    
+    @Override
+    public String toString() {
+        String s;
+        s = "NIP : " +getNip()+ "\n";
+        s += "Nama : " + getNama() + "\n";
+        s += "Nomor Telepon : " + getNoTelp() + "\n";
+
+        return s;
     }
 }
