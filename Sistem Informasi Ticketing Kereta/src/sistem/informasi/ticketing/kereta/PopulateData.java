@@ -17,8 +17,8 @@ public class PopulateData {
         ArrayList<Kereta> ks = new ArrayList<Kereta>();
         
         Kereta kereta1 = new Kereta("Mutiara Selatan", new Date());
-        kereta1.addRute(new Stasiun("Gubeng", "Surabaya"),new Stasiun("Kiara Condong", "Bandung"));
         kereta1.addRute(new Stasiun("Kiara Condong", "Bandung"),new Stasiun("Gubeng", "Surabaya"));
+        
         Kereta kereta2 = new Kereta("Malabar", new Date());
         kereta2.addRute(new Stasiun("Lempuyangan", "Yogyakarta"),new Stasiun("Kiara Condong", "Bandung"));
         
@@ -98,7 +98,7 @@ public class PopulateData {
     public static ArrayList<Pegawai> populatePegawai() {
         ArrayList<Pegawai> pegawais = new ArrayList<Pegawai>();
         
-        Pegawai p = new Pegawai("PGW-001211", "pegawai1", "pegawai1");
+        Pegawai p = new Pegawai("PGW-001211", "pegawai1", "pegawai1", "085659540490", "Anggi");
         p.setNama("Kelompok 1");
         p.setAlamat("Sukabirus");
         pegawais.add(p);
