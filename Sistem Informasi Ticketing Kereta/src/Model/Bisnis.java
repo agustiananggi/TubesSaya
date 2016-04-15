@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistem.informasi.ticketing.kereta;
+package Model;
+
+import Controller.Gerbong;
 
 /**
  *

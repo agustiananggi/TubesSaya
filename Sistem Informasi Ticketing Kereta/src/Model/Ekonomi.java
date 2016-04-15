@@ -3,19 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistem.informasi.ticketing.kereta;
+package Model;
+
+import Controller.Gerbong;
 
 /**
  *
  * @author Riartha
  */
-public class Eksekutif extends Gerbong {
-     public Eksekutif(String kodeGerbong) {
-        super(84, kodeGerbong);
+public class Ekonomi extends Gerbong {
+     public Ekonomi(String kodeGerbong) {
+        super(105, kodeGerbong);
     }
 
     @Override
     public String getFasilitas() {
-        return "Fasilitas gerdong AC kursi dengan sandaran punggung dan kaki";
+        return "Ekonomi AC : Kapasitas 105 Penumpang";
     }
 }

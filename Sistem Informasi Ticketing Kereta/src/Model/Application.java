@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistem.informasi.ticketing.kereta;
+package Model;
 
+import Controller.PopulateData;
+import Controller.Kereta;
+import Controller.Gerbong;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
@@ -28,7 +31,7 @@ public class Application {
     public void main() {
       
 
-        pegawais.add(new Pegawai("1111", "PBO", "sandiaman","085659540490","Anggi"));
+        pegawais.add(new Pegawai("1111", "PBO", "if3809","085659540490","Anggi"));
 
         while (mn != 0) {
 
