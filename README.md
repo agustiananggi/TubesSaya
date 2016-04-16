@@ -32,13 +32,16 @@ Di dalam menu cek kereta, dapat dilakukan pengecekkan terhadap kereta yang terda
 ##3. Cari Tiket
 ![03] (/asset/3.JPG) <br>
 
-Di dalam menu cari tiket ini, dapat dilakukan pencarian tiket berdasarkan kode tiket penumpang yang sudah di pesan. Jika pencarian berhasil dilakukan, maka dapat dilakukan pembatalan tiket,
-perubahan data tiket, atau pencetakan ulang tiket. Informasi dari tiket tersebut juga akan ditampilkan
+Di dalam menu cari tiket ini, dapat dilakukan pencarian tiket berdasarkan kode tiket penumpang yang sudah di pesan. Jika pencarian berhasil dilakukan, maka dapat dilakukan pembatalan tiket, perubahan data tiket,atau pencetakan ulang tiket. Informasi dari tiket tersebut juga akan ditampilkan.
+
+
 --
 <br>
 
 ##4. Pegawai
 ![04] (/asset/4.JPG) <br>
-Di dalam menu pegawai ini, dapat ditambahkan akun pegawai baru yang memiliki hak akses ke aplikasi ini. Di menu ini juga dapat dilakukan penghapusan akun pegawai, serta perubahan data akun pegawai yang ingin dirubah.
---
 
+Di dalam menu pegawai ini, dapat ditambahkan akun pegawai baru yang memiliki hak akses ke aplikasi ini. Di menu ini juga dapat dilakukan penghapusan akun pegawai, serta perubahan data akun pegawai yang ingin dirubah.
+
+--
+<br>
